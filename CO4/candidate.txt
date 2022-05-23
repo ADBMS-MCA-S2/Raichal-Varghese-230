@@ -1,0 +1,51 @@
+> use candidate
+switched to db candidate
+
+> db.createCollection("details")
+{ "ok" : 1 }
+> db.details.insertMany([{name:"Rio",gender:"male",age:20,amount:2000},{name:"Adam",gender:"male",age:25,amount:4000},{name:"Kaylie",gender:"female",age:31,amount:10000},{name:"Taylor",gender:"female",age:20,amount:9000},{name:"Lily",gender:"female",age:29,amount:8000}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("628b9dfbe0fb0884062d1999"),
+                ObjectId("628b9dfbe0fb0884062d199a"),
+                ObjectId("628b9dfbe0fb0884062d199b"),
+                ObjectId("628b9dfbe0fb0884062d199c"),
+                ObjectId("628b9dfbe0fb0884062d199d")
+        ]
+}
+
+> db.details.insertMany([{name:"Rohan",gender:"male",age:22,amount:5000},{name:"Janet",gender:"female",age:26,amount:35000},{name:"Rahel",gender:"female",age:32,amount:6000},{name:"Kate",gender:"female",age:23,amount:700},{name:"John",gender:"female",age:24,amount:4000}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("628ba092e0fb0884062d199e"),
+                ObjectId("628ba092e0fb0884062d199f"),
+                ObjectId("628ba092e0fb0884062d19a0"),
+                ObjectId("628ba092e0fb0884062d19a1"),
+                ObjectId("628ba092e0fb0884062d19a2")
+        ]
+}
+
+// customers who are either male or younger than 25.
+
+> db.details.find({$or:[{gender:"male"},{age:{$lt:25}}]},{_id:0})
+{ "name" : "Rio", "gender" : "male", "age" : 20, "amount" : 2000 }
+{ "name" : "Adam", "gender" : "male", "age" : 25, "amount" : 4000 }
+{ "name" : "Taylor", "gender" : "female", "age" : 20, "amount" : 9000 }
+{ "name" : "Rohan", "gender" : "male", "age" : 22, "amount" : 5000 }
+{ "name" : "Kate", "gender" : "female", "age" : 23, "amount" : 700 }
+{ "name" : "John", "gender" : "female", "age" : 24, "amount" : 4000 }
+
+// total purchase amount for males and females using aggreagate
+
+> db.details.aggregate([{$group:{_id:"$gender","total_amt":{$sum:"$amount"}}}])
+{ "_id" : "male", "total_amt" : 30000 }
+{ "_id" : "female", "total_amt" : 72700 }
+
+// customers who are older than 25 - calculate avg purchase amount for males and females  - sort the data based on avg amount.
+
+> db.details.aggregate([{$match:{"age":{$gte:25}}},{$group:{_id:"$gender","avg_amt":{$avg:"$amount"}}},{$sort:{avg:1}}])
+{ "_id" : "male", "avg_amt" : 4666.666666666667 }
+{ "_id" : "female", "avg_amt" : 14750 }
+>s
