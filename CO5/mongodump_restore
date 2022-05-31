@@ -1,0 +1,116 @@
+C:\WINDOWS\system32>cd C:\Program Files\MongoDB\Tools\100\bin
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump
+2022-05-31T19:08:30.306+0530    writing admin.system.version to dump\admin\system.version.bson
+2022-05-31T19:08:30.308+0530    done dumping admin.system.version (1 document)
+2022-05-31T19:08:30.309+0530    writing candidate.details to dump\candidate\details.bson
+2022-05-31T19:08:30.310+0530    done dumping candidate.details (13 documents)
+2022-05-31T19:08:30.310+0530    writing blog.users to dump\blog\users.bson
+2022-05-31T19:08:30.311+0530    done dumping blog.users (0 documents)
+2022-05-31T19:08:30.312+0530    writing school.stud to dump\school\stud.bson
+2022-05-31T19:08:30.313+0530    done dumping school.stud (0 documents)
+2022-05-31T19:08:30.637+0530    writing Employee.employee to dump\Employee\employee.bson
+2022-05-31T19:08:30.637+0530    writing college.studlist to dump\college\studlist.bson
+2022-05-31T19:08:30.638+0530    done dumping college.studlist (7 documents)
+2022-05-31T19:08:30.638+0530    done dumping Employee.employee (6 documents)
+2022-05-31T19:08:30.647+0530    writing blog.posts to dump\blog\posts.bson
+2022-05-31T19:08:30.648+0530    done dumping blog.posts (2 documents)
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore
+2022-05-31T19:09:32.303+0530    using default 'dump' directory
+2022-05-31T19:09:32.305+0530    preparing collections to restore from
+2022-05-31T19:09:32.331+0530    reading metadata for blog.posts from dump\blog\posts.metadata.json
+2022-05-31T19:09:32.337+0530    reading metadata for blog.users from dump\blog\users.metadata.json
+2022-05-31T19:09:32.340+0530    reading metadata for candidate.details from dump\candidate\details.metadata.json
+2022-05-31T19:09:32.342+0530    reading metadata for college.studlist from dump\college\studlist.metadata.json
+2022-05-31T19:09:32.346+0530    reading metadata for school.stud from dump\school\stud.metadata.json
+2022-05-31T19:09:32.349+0530    reading metadata for Employee.employee from dump\Employee\employee.metadata.json
+2022-05-31T19:09:32.350+0530    restoring to existing collection college.studlist without dropping
+2022-05-31T19:09:32.350+0530    restoring to existing collection Employee.employee without dropping
+2022-05-31T19:09:32.352+0530    restoring to existing collection candidate.details without dropping
+2022-05-31T19:09:32.354+0530    restoring to existing collection blog.posts without dropping
+2022-05-31T19:09:32.357+0530    restoring college.studlist from dump\college\studlist.bson
+2022-05-31T19:09:32.357+0530    restoring Employee.employee from dump\Employee\employee.bson
+2022-05-31T19:09:32.358+0530    restoring blog.posts from dump\blog\posts.bson
+2022-05-31T19:09:32.494+0530    restoring candidate.details from dump\candidate\details.bson
+2022-05-31T19:09:32.762+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb6a6e0fb0884062d19a6') }
+2022-05-31T19:09:32.762+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb6a6e0fb0884062d19a7') }
+2022-05-31T19:09:32.763+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb6a6e0fb0884062d19a8') }
+2022-05-31T19:09:32.768+0530    continuing through error: E11000 duplicate key error collection: blog.posts index: _id_ dup key: { _id: ObjectId('62735afd578b2cf88f0d92ed') }
+2022-05-31T19:09:32.768+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955e8030bbeb0bb1f42e68') }
+2022-05-31T19:09:32.769+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb6a6e0fb0884062d19a9') }
+2022-05-31T19:09:32.769+0530    continuing through error: E11000 duplicate key error collection: blog.posts index: _id_ dup key: { _id: ObjectId('62735ba9578b2cf88f0d92ee') }
+2022-05-31T19:09:32.769+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955ecb30bbeb0bb1f42e69') }
+2022-05-31T19:09:32.770+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955f0430bbeb0bb1f42e6a') }
+2022-05-31T19:09:32.771+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955f7630bbeb0bb1f42e6b') }
+2022-05-31T19:09:32.771+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb8f553164b078699cc7b') }
+2022-05-31T19:09:32.771+0530    finished restoring blog.posts (0 documents, 2 failures)
+2022-05-31T19:09:32.772+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955fc630bbeb0bb1f42e6c') }
+2022-05-31T19:09:32.772+0530    continuing through error: E11000 duplicate key error collection: Employee.employee index: _id_ dup key: { _id: ObjectId('628bb8f553164b078699cc7c') }
+2022-05-31T19:09:32.772+0530    finished restoring Employee.employee (0 documents, 6 failures)
+2022-05-31T19:09:32.773+0530    restoring to existing collection blog.users without dropping
+2022-05-31T19:09:32.773+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('62955ff630bbeb0bb1f42e6d') }
+2022-05-31T19:09:32.773+0530    continuing through error: E11000 duplicate key error collection: college.studlist index: _id_ dup key: { _id: ObjectId('6295607130bbeb0bb1f42e6e') }
+2022-05-31T19:09:32.773+0530    restoring blog.users from dump\blog\users.bson
+2022-05-31T19:09:32.773+0530    finished restoring college.studlist (0 documents, 7 failures)
+2022-05-31T19:09:32.794+0530    finished restoring blog.users (0 documents, 0 failures)
+2022-05-31T19:09:33.015+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b9dfbe0fb0884062d1999') }
+2022-05-31T19:09:33.015+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b9dfbe0fb0884062d199a') }
+2022-05-31T19:09:33.023+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b9dfbe0fb0884062d199b') }
+2022-05-31T19:09:33.023+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b9dfbe0fb0884062d199c') }
+2022-05-31T19:09:33.024+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b9dfbe0fb0884062d199d') }
+2022-05-31T19:09:33.024+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628ba092e0fb0884062d199e') }
+2022-05-31T19:09:33.025+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628ba092e0fb0884062d199f') }
+2022-05-31T19:09:33.025+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628ba092e0fb0884062d19a0') }
+2022-05-31T19:09:33.026+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628ba092e0fb0884062d19a1') }
+2022-05-31T19:09:33.027+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628ba092e0fb0884062d19a2') }
+2022-05-31T19:09:33.030+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628bb28fe0fb0884062d19a3') }
+2022-05-31T19:09:33.032+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628bb28fe0fb0884062d19a4') }
+2022-05-31T19:09:33.033+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628bb28fe0fb0884062d19a5') }
+2022-05-31T19:09:33.034+0530    finished restoring candidate.details (0 documents, 13 failures)
+2022-05-31T19:09:33.383+0530    restoring school.stud from dump\school\stud.bson
+2022-05-31T19:09:33.411+0530    finished restoring school.stud (0 documents, 0 failures)
+2022-05-31T19:09:33.411+0530    no indexes to restore for collection Employee.employee
+2022-05-31T19:09:33.412+0530    no indexes to restore for collection college.studlist
+2022-05-31T19:09:33.417+0530    no indexes to restore for collection school.stud
+2022-05-31T19:09:33.417+0530    no indexes to restore for collection blog.users
+2022-05-31T19:09:33.421+0530    no indexes to restore for collection blog.posts
+2022-05-31T19:09:33.421+0530    no indexes to restore for collection candidate.details
+2022-05-31T19:09:33.422+0530    0 document(s) restored successfully. 28 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db school
+2022-05-31T19:12:13.000+0530    writing school.stud to dump\school\stud.bson
+2022-05-31T19:12:13.001+0530    done dumping school.stud (0 documents)
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db school dump/school
+2022-05-31T19:14:24.281+0530    The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2022-05-31T19:14:24.282+0530    building a list of collections to restore from dump\school dir
+2022-05-31T19:14:24.296+0530    reading metadata for school.stud from dump\school\stud.metadata.json
+2022-05-31T19:14:24.419+0530    restoring school.stud from dump\school\stud.bson
+2022-05-31T19:14:24.447+0530    finished restoring school.stud (0 documents, 0 failures)
+2022-05-31T19:14:24.447+0530    no indexes to restore for collection school.stud
+2022-05-31T19:14:24.448+0530    0 document(s) restored successfully. 0 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db newDatabase --collection newCollection
+2022-05-31T19:17:46.225+0530    namespace with DB newDatabase and collection newCollection does not exist
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db newDatabase --collectionnewCollection
+2022-05-31T20:12:02.540+0530    error parsing command line options: unknown option "collectionnewCollection"
+2022-05-31T20:12:02.540+0530    try 'mongodump --help' for more information
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db newDatabase --collection newCollection
+2022-05-31T20:12:45.901+0530    namespace with DB newDatabase and collection newCollection does not exist
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db newDatabase --collection newCollection dump/newDatabase/newCollection.bson
+2022-05-31T20:14:38.817+0530    Failed: mongorestore target 'dump\newDatabase\newCollection.bson' invalid: CreateFile dump\newDatabase\newCollection.bson: The system cannot find the path specified.
+2022-05-31T20:14:38.817+0530    0 document(s) restored successfully. 0 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db newDatabase --collection newCollection dump\newDatabase\newCollection.bson
+2022-05-31T20:15:00.075+0530    Failed: mongorestore target 'dump\newDatabase\newCollection.bson' invalid: CreateFile dump\newDatabase\newCollection.bson: The system cannot find the path specified.
+2022-05-31T20:15:00.075+0530    0 document(s) restored successfully. 0 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db newDatabase --collection newCollection dump/newDatabase/newCollection.bson
+2022-05-31T20:16:47.509+0530    Failed: mongorestore target 'dump\newDatabase\newCollection.bson' invalid: CreateFile dump\newDatabase\newCollection.bson: The system cannot find the path specified.
+2022-05-31T20:16:47.510+0530    0 document(s) restored successfully. 0 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db newdatabase --collection newCollection dump/newDatabase/newCollection.bson
