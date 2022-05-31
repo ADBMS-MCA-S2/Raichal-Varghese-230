@@ -1,0 +1,357 @@
+---------------------------------------------------------------27018------------------------------------------------------------------------------------------------------
+
+Microsoft Windows [Version 10.0.19044.1645]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\RAICHAL>cd C:\Program Files\MongoDB\Server\5.0\bin
+
+C:\Program Files\MongoDB\Server\5.0\bin>start mongod -replSet bac -logpath \data\rs1\1.log
+
+C:\Program Files\MongoDB\Server\5.0\bin>start mongod -replSet bac -logpath \data\rs1\1.log --dbpath \data\rs1 --port 27018
+
+C:\Program Files\MongoDB\Server\5.0\bin>start mongod -replSet bac -logpath \data\rs2\2.log --dbpath \data\rs2 --port 27019
+
+C:\Program Files\MongoDB\Server\5.0\bin>start mongod -replSet bac -logpath \data\rs3\3.log --dbpath \data\rs3 --port 27020
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongo --port 27018
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27018/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("709e306d-ba88-415c-9439-0606bb1dde8b") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-05-31T20:42:43.025+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-05-31T20:42:43.026+05:30: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> rs.initiate(config)
+uncaught exception: ReferenceError: config is not defined :
+@(shell):1:1
+> config={_id:"bac",members:[{_id:0,host:"localhost:27018"},{_id:1,host:"localhost:27019"},{_id:2,host:"localhost:27020"}]}
+{
+        "_id" : "bac",
+        "members" : [
+                {
+                        "_id" : 0,
+                        "host" : "localhost:27018"
+                },
+                {
+                        "_id" : 1,
+                        "host" : "localhost:27019"
+                },
+                {
+                        "_id" : 2,
+                        "host" : "localhost:27020"
+                }
+        ]
+}
+> rs.initiate(config)
+{ "ok" : 1 }
+bac:OTHER> rs.status()
+{
+        "set" : "bac",
+        "date" : ISODate("2022-05-31T15:19:48.436Z"),
+        "myState" : 1,
+        "term" : NumberLong(1),
+        "syncSourceHost" : "",
+        "syncSourceId" : -1,
+        "heartbeatIntervalMillis" : NumberLong(2000),
+        "majorityVoteCount" : 2,
+        "writeMajorityCount" : 2,
+        "votingMembersCount" : 3,
+        "writableVotingMembersCount" : 3,
+        "optimes" : {
+                "lastCommittedOpTime" : {
+                        "ts" : Timestamp(1654010378, 7),
+                        "t" : NumberLong(1)
+                },
+                "lastCommittedWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                "readConcernMajorityOpTime" : {
+                        "ts" : Timestamp(1654010378, 7),
+                        "t" : NumberLong(1)
+                },
+                "appliedOpTime" : {
+                        "ts" : Timestamp(1654010378, 7),
+                        "t" : NumberLong(1)
+                },
+                "durableOpTime" : {
+                        "ts" : Timestamp(1654010378, 7),
+                        "t" : NumberLong(1)
+                },
+                "lastAppliedWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                "lastDurableWallTime" : ISODate("2022-05-31T15:19:38.152Z")
+        },
+        "lastStableRecoveryTimestamp" : Timestamp(1654010365, 1),
+        "electionCandidateMetrics" : {
+                "lastElectionReason" : "electionTimeout",
+                "lastElectionDate" : ISODate("2022-05-31T15:19:37.144Z"),
+                "electionTerm" : NumberLong(1),
+                "lastCommittedOpTimeAtElection" : {
+                        "ts" : Timestamp(1654010365, 1),
+                        "t" : NumberLong(-1)
+                },
+                "lastSeenOpTimeAtElection" : {
+                        "ts" : Timestamp(1654010365, 1),
+                        "t" : NumberLong(-1)
+                },
+                "numVotesNeeded" : 2,
+                "priorityAtElection" : 1,
+                "electionTimeoutMillis" : NumberLong(10000),
+                "numCatchUpOps" : NumberLong(0),
+                "newTermStartDate" : ISODate("2022-05-31T15:19:37.193Z"),
+                "wMajorityWriteAvailabilityDate" : ISODate("2022-05-31T15:19:38.105Z")
+        },
+        "members" : [
+                {
+                        "_id" : 0,
+                        "name" : "localhost:27018",
+                        "health" : 1,
+                        "state" : 1,
+                        "stateStr" : "PRIMARY",
+                        "uptime" : 427,
+                        "optime" : {
+                                "ts" : Timestamp(1654010378, 7),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2022-05-31T15:19:38Z"),
+                        "lastAppliedWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "lastDurableWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "syncSourceHost" : "",
+                        "syncSourceId" : -1,
+                        "infoMessage" : "",
+                        "electionTime" : Timestamp(1654010377, 1),
+                        "electionDate" : ISODate("2022-05-31T15:19:37Z"),
+                        "configVersion" : 1,
+                        "configTerm" : 1,
+                        "self" : true,
+                        "lastHeartbeatMessage" : ""
+                },
+                {
+                        "_id" : 1,
+                        "name" : "localhost:27019",
+                        "health" : 1,
+                        "state" : 2,
+                        "stateStr" : "SECONDARY",
+                        "uptime" : 22,
+                        "optime" : {
+                                "ts" : Timestamp(1654010378, 7),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDurable" : {
+                                "ts" : Timestamp(1654010378, 7),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2022-05-31T15:19:38Z"),
+                        "optimeDurableDate" : ISODate("2022-05-31T15:19:38Z"),
+                        "lastAppliedWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "lastDurableWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "lastHeartbeat" : ISODate("2022-05-31T15:19:47.181Z"),
+                        "lastHeartbeatRecv" : ISODate("2022-05-31T15:19:48.183Z"),
+                        "pingMs" : NumberLong(0),
+                        "lastHeartbeatMessage" : "",
+                        "syncSourceHost" : "localhost:27018",
+                        "syncSourceId" : 0,
+                        "infoMessage" : "",
+                        "configVersion" : 1,
+                        "configTerm" : 1
+                },
+                {
+                        "_id" : 2,
+                        "name" : "localhost:27020",
+                        "health" : 1,
+                        "state" : 2,
+                        "stateStr" : "SECONDARY",
+                        "uptime" : 22,
+                        "optime" : {
+                                "ts" : Timestamp(1654010378, 7),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDurable" : {
+                                "ts" : Timestamp(1654010378, 7),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2022-05-31T15:19:38Z"),
+                        "optimeDurableDate" : ISODate("2022-05-31T15:19:38Z"),
+                        "lastAppliedWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "lastDurableWallTime" : ISODate("2022-05-31T15:19:38.152Z"),
+                        "lastHeartbeat" : ISODate("2022-05-31T15:19:47.181Z"),
+                        "lastHeartbeatRecv" : ISODate("2022-05-31T15:19:48.183Z"),
+                        "pingMs" : NumberLong(0),
+                        "lastHeartbeatMessage" : "",
+                        "syncSourceHost" : "localhost:27018",
+                        "syncSourceId" : 0,
+                        "infoMessage" : "",
+                        "configVersion" : 1,
+                        "configTerm" : 1
+                }
+        ],
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1654010378, 7),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1654010378, 7)
+}
+bac:PRIMARY> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+bac:PRIMARY> use raichal
+switched to db raichal
+bac:PRIMARY> db.student.insert({name:"Raichal"})
+WriteResult({ "nInserted" : 1 })
+bac:PRIMARY> use admin
+switched to db admin
+bac:PRIMARY> db.shutdownServer()
+server should be down...
+>
+
+---------------------------------------------------------------------27019----------------------------------------------------------------------------------------------
+
+Microsoft Windows [Version 10.0.19044.1645]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\RAICHAL>cd C:\Program Files\MongoDB\Server\5.0\bin
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongo --port 27019
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27019/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2877e227-02e4-44de-8a09-55392c4c5366") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-05-31T20:43:27.642+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-05-31T20:43:27.642+05:30: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+bac:SECONDARY> rs.slaveOk()
+WARNING: slaveOk() is deprecated and may be removed in the next major release. Please use secondaryOk() instead.
+bac:SECONDARY> rs.secondaryOk()
+bac:SECONDARY> show dbs
+admin    0.000GB
+config   0.000GB
+local    0.000GB
+raichal  0.000GB
+bac:SECONDARY> show collections
+bac:SECONDARY> use raichal
+switched to db raichal
+bac:SECONDARY> show collections
+student
+bac:SECONDARY> db.student.find()
+{ "_id" : ObjectId("629632574f1b5656dc5665f5"), "name" : "Raichal" }
+bac:SECONDARY> db.student.find()
+{ "_id" : ObjectId("629632574f1b5656dc5665f5"), "name" : "Raichal" }
+bac:PRIMARY> db.student.insert({name:"Ria"})
+WriteResult({ "nInserted" : 1 })
+bac:PRIMARY>
+
+----------------------------------------------------------------------------27020-------------------------------------------------------------------------------------------
+
+
+Microsoft Windows [Version 10.0.19044.1645]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\RAICHAL>cd C:\Program Files\MongoDB\Server\5.0\bin
+
+C:\Program Files\MongoDB\Server\5.0\bin>--port 27020
+'--port' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongo --port 27020
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27020/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1f224895-5b2e-4451-bbe5-e21940b95549") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-05-31T20:43:44.122+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-05-31T20:43:44.122+05:30: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+bac:SECONDARY> rs.secondaryOk()
+bac:SECONDARY> show dbs
+admin    0.000GB
+config   0.000GB
+local    0.000GB
+raichal  0.000GB
+bac:SECONDARY> use raichal
+switched to db raichal
+bac:SECONDARY> show collections
+student
+bac:SECONDARY> db.student.insert({name:"Ria"})
+WriteCommandError({
+        "topologyVersion" : {
+                "processId" : ObjectId("629630a7078a4264cffc65b1"),
+                "counter" : NumberLong(4)
+        },
+        "ok" : 0,
+        "errmsg" : "not master",
+        "code" : 10107,
+        "codeName" : "NotWritablePrimary",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1654010717, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1654010717, 1)
+})
+bac:SECONDARY> db.student.find()
+{ "_id" : ObjectId("629632574f1b5656dc5665f5"), "name" : "Raichal" }
+{ "_id" : ObjectId("62963402b5e24d4d13cb9872"), "name" : "Ria" }
+bac:SECONDARY>
