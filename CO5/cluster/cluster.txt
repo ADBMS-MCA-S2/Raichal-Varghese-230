@@ -1,0 +1,8 @@
+import pymongo
+from pymongo import MongoClient
+client = MongoClient('mongodb+srv://Raichal:******@cluster0.lfois.mongodb.net/?retryWrites=true&w=majority')
+db = client.gettingStarted
+people = db.people
+personDocument = {"name":{"first":"Anju","Last":"Soni"}}
+people.insert_one(personDocument)
+<pymongo.results.InsertOneResult object at 0x0000025EB27FB2E0>
